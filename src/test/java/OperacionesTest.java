@@ -43,11 +43,35 @@ public class OperacionesTest {
     @Test
     public void OperacionesTest5() {
         Operaciones op = new Operaciones();
+        int[][] mat = new int[][]{{1, 2, 4}, {0, 0, 0}, {2, 2, 3}};
+        assertEquals(14, op.sumarElementos(mat));
+    }
+
+    @Test
+    public void OperacionesTest6() {
+        Operaciones op = new Operaciones();
+        int[][] mat = new int[][]{{1, 2, 4}, {0, 0, 0}, {2, 2, -3}};
+        assertEquals(8, op.sumarElementos(mat));
+    }
+
+    @Test
+    public void OperacionesTest7() {
+        Operaciones op = new Operaciones();
         List<Double> numList = new ArrayList<>();
         numList.add(13.0);
         numList.add(-14.1);
         numList.add(99999D);
         assertEquals(-14.1, op.buscarMenor(numList), 1E-6);
+    }
+
+    @Test
+    public void OperacionesTest8() {
+        Operaciones op = new Operaciones();
+        List<Double> numList = new ArrayList<>();
+        numList.add(13.0);
+        numList.add(-1444.1);
+        numList.add(0D);
+        assertEquals(-1444.1, op.buscarMenor(numList), 1E-6);
     }
 
 

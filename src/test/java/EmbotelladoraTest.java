@@ -17,4 +17,29 @@ public class EmbotelladoraTest {
         assertEquals(99.7, e.getGel(), 1E-16);
     }
 
+    @Test
+    public void EmbotelladoraTest2() {
+        Embotelladora e = new Embotelladora();
+        e.cargarAlcohol(10);
+        e.cargarGel(10);
+        for (int i = 0; i < 500; i++) {
+            e.embotellar();
+        }
+        assertTrue(e.getError());
+
+    }
+
+    @Test
+    public void EmbotelladoraTest3() {
+        Embotelladora e = new Embotelladora();
+        e.cargarAlcohol(10);
+        e.cargarGel(10);
+        for (int i = 0; i < 500; i++) {
+            e.embotellar();
+        }
+        assertEquals(5.7999, e.getGel(), 1e-1);
+        assertEquals(0.1999, e.getAlcohol(), 1e-1);
+
+    }
+
 }
