@@ -33,6 +33,12 @@ public class OperacionesTest {
         assertEquals(3, op.buscarMayor(new int[]{1, 2, 3}));
     }
 
+    /**
+     * Fallos en los resultados esperados al sumar elementos de arrays multidimensionales
+     * matriz: int[][] mat = new int[][]{{1, 2, 3}, {0, 0, 0}, {1, 2, 3}};
+     * Expected :12
+     * Obtained   :3
+     * */
     @Test
     public void OperacionesTest4() {
         Operaciones op = new Operaciones();
@@ -72,6 +78,16 @@ public class OperacionesTest {
         numList.add(-1444.1);
         numList.add(0D);
         assertEquals(-1444.1, op.buscarMenor(numList), 1E-6);
+    }
+
+    @Test
+    public void OperacionesTest9() {
+        Operaciones op = new Operaciones();
+        List<Double> numList = new ArrayList<>();
+        numList.add(0.0);
+        numList.add(0.0);
+        numList.add(0.0);
+        assertEquals(0, op.buscarMenor(numList), 1E-6);
     }
 
 
