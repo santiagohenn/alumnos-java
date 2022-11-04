@@ -1,4 +1,7 @@
+package p1;
+
 import org.junit.Test;
+import p1.Operaciones;
 
 import java.util.ArrayList;
 import java.util.List;

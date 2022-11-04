@@ -1,4 +1,8 @@
+package p1;
+
 import org.junit.Test;
+import p1.Embotelladora;
+
 import static org.junit.Assert.*;
 
 public class EmbotelladoraTest {
