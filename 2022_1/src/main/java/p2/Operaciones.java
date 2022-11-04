@@ -16,7 +16,7 @@ public class Operaciones {
     }
 
     /**
-     * Este método toma una lista de listas de Strings y devuelve el tamaño de la segunda lista (index 1)
+     * Este método toma una lista de listas de Strings y devuelve el tamaño de la SEGUNDA lista (index 1)
      * de las listas pasadas como parametro
      **/
     public int listSize(List<List<String>> listaDeListas) {
@@ -28,7 +28,7 @@ public class Operaciones {
      * 10, entonces debe eliminar todas las entradas (elementos) de ese mapa, de lo contrario no se debe
      * modificar el mapa.
      **/
-    public void getAndDelete(Map<String, String> mapa) {
+    public void sizeAndDelete(Map<String, String> mapa) {
         if (mapa.size() >= 10) {
             mapa.clear();
         }
@@ -36,10 +36,15 @@ public class Operaciones {
 
     /**
      * Este método toma un mapa <Integer, String> como parámetro. Si el mapa no contiene TU DNI como llave,
-     * entonces se debe agregar la entrada < TU DNI (Llave, Integer), Tu nombre (Valor, String) >.
+     * entonces se debe agregar la entrada < TU DNI (Llave, Integer), Tu nombre (Valor, String) > Si el mapa
+     * contiene tu DNI, entonces debes borrar esa entrada (llave, valor) del mapa.
      **/
     public void addAlumno(Map<Integer, String> mapa) {
-        mapa.putIfAbsent(123456789, "Alumno");
+        if (mapa.containsKey(123456789)) {
+            mapa.remove(123456789);
+        } else {
+            mapa.put(123456789, "Alumno");
+        }
     }
 
 
@@ -53,10 +58,13 @@ public class Operaciones {
 
     /**
      * Este método toma un mapa <String, Double> como parámetro y devuelve la suma de todos los valores
-     * contenidos en el mapa
+     * contenidos en el mapa, o 0 si el mapa esta vacío
      **/
     public double sumarValores(Map<String, Double> mapa) {
         double suma = 0;
+        if (mapa.size() == 0) {
+            return 0;
+        }
         for (Double v : mapa.values()) {
             suma += v;
         }
