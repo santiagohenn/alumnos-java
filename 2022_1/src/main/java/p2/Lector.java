@@ -14,20 +14,7 @@ public class Lector {
     private int dni = 1234567;
 
     public Lector(String ruta) {
-        System.out.println(dni);
         this.ruta = ruta;
-    }
-
-    public Map<Integer, String> leerLineas(int[] lineas) {
-
-        Map<Integer, String> mapa = new HashMap<>();
-
-        for (int i : lineas) {
-            mapa.put(i, leerLinea(i));
-        }
-
-        return mapa;
-
     }
 
     public String leerLinea(int num) {
@@ -53,6 +40,30 @@ public class Lector {
         }
 
         return lineas.get(num);
+    }
+
+    public Map<Integer, String> leerLineas(int[] lineas) {
+
+        Map<Integer, String> mapa = new HashMap<>();
+
+        for (int i : lineas) {
+            mapa.put(i, leerLinea(i));
+        }
+
+        return mapa;
+
+    }
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public int getDni() {

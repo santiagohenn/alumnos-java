@@ -49,8 +49,8 @@ public class Operaciones {
 
 
     /**
-     * Este método toma un mapa <String, String> como parámetro y devuelve una lista (ArrayList) conteniendo
-     * todas las llaves del mapa
+     * Este método tomará un LinkedHashMap <String, String> como parámetro y
+     * devuelve una lista (ArrayList) conteniendo todas las llaves del mapa
      **/
     public List<String> llaves(Map<String, String> mapa) {
         return new ArrayList<>(mapa.keySet());

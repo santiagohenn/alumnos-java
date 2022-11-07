@@ -4,9 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.lang.reflect.Field;
+import java.nio.file.Files;
 import java.util.*;
 
 public class OperacionesTest {
@@ -49,9 +49,9 @@ public class OperacionesTest {
 
         Operaciones op = new Operaciones();
         List<List<String>> listas = new ArrayList<>();
-        List<String> lista = Arrays.asList("first", "second", "third");
-        listas.add(Arrays.asList("first", "second", "third"));
-        listas.add(lista);
+        listas.add(Arrays.asList("rojo", "amarillo"));
+        listas.add(Arrays.asList("red", "yellow", "blue"));
+        listas.add(Arrays.asList("rosso", "giallo"));
         Assert.assertEquals(3, op.listSize(listas));
 
     }
@@ -124,6 +124,7 @@ public class OperacionesTest {
 
         Map<Integer, String> mapa = new HashMap<>();
         op.addAlumno(mapa);
+        Assert.assertTrue(mapa.containsKey(123456789));
         Assert.assertEquals(1, mapa.size());
 
     }
@@ -134,6 +135,7 @@ public class OperacionesTest {
         Map<Integer, String> mapa = new HashMap<>();
         mapa.put(123456789, "Alumno");
         op.addAlumno(mapa);
+        Assert.assertFalse(mapa.containsKey(123456789));
         Assert.assertEquals(0, mapa.size());
 
     }
@@ -153,7 +155,7 @@ public class OperacionesTest {
     @Test
     public void llavesTest1() {
 
-        Map<String, String> mapa = new HashMap<>();
+        Map<String, String> mapa = new LinkedHashMap<>();
         mapa.put("d1", "");
         mapa.put("d2", "");
         mapa.put("d3", "");
@@ -211,7 +213,7 @@ public class OperacionesTest {
     public void inputStreamTest1() {
 
         try {
-            op.inputStream("bad_file.txt");
+            FileInputStream fis = op.inputStream("bad_file.txt");
         } catch (FileNotFoundException e) {
             Assert.assertTrue(true);
         }
@@ -220,18 +222,49 @@ public class OperacionesTest {
 
     @Test
     public void writerTest0() {
-
         try {
-            FileInputStream fis = op.inputStream("input.txt");
-            Field field = fis.getClass().getDeclaredField("path");
-            field.setAccessible(true);
-            String path = (String) field.get(fis);
-            Assert.assertEquals("input.txt", path);
-        } catch (FileNotFoundException | NoSuchFieldException | IllegalAccessException e) {
+            FileWriter fis = op.writer("input.txt");
+        } catch (IOException e) {
             Assert.fail();
+        }
+    }
+
+    @Test
+    public void writerTest1() {
+        try {
+            FileWriter fis = op.writer("bad_file.txt");
+        } catch (IOException e) {
+            Assert.assertTrue(true);
+        }
+    }
+
+    @Test
+    public void readerTest0() {
+        Assert.assertTrue(op.reader("input.txt"));
+    }
+
+    @Test
+    public void readerTest1() {
+        Assert.assertTrue(op.reader("bad_file.txt"));
+    }
+
+    @Test
+    public void hwTest0() {
+        File file = new File("hw.txt");
+        try {
+            boolean result = Files.deleteIfExists(file.toPath());
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        op.writeHelloWorld("hw.txt");
+        Lector lec = new Lector("hw.txt");
+        String hw = lec.leerLinea(0);
+        System.out.println(hw);
+    }
 
+    @Test
+    public void hwTest1() {
+        Assert.assertTrue(op.reader("bad_file.txt"));
     }
 
 
