@@ -31,7 +31,7 @@ public class Lector {
             }
             fr.close();
 
-            if (num < 0 || num > lineas.size()) {
+            if (num < 0 || num >= lineas.size()) {
                 return "error";
             }
 

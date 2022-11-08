@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
-import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.util.*;
 
@@ -258,13 +257,9 @@ public class OperacionesTest {
         }
         op.writeHelloWorld("hw.txt");
         Lector lec = new Lector("hw.txt");
-        String hw = lec.leerLinea(0);
-        System.out.println(hw);
-    }
-
-    @Test
-    public void hwTest1() {
-        Assert.assertTrue(op.reader("bad_file.txt"));
+        String hw = lec.leerLinea(0).replaceAll(" ","")
+                .toLowerCase(Locale.ROOT);
+        Assert.assertEquals("holamundo!", hw);
     }
 
 
