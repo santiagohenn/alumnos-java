@@ -12,11 +12,16 @@ public class Decodificador {
 
     public static void main(String[] args) {
 
-        List<String> decodificadas = leerArchivo("C:/Projects/alumnos-java/2022_1/coded.txt");
-        String s = decodificar(decodificadas.get(0));
+        Decodificador deco = new Decodificador();
+        List<String> decodificadas = deco.leerArchivo("C:/Projects/alumnos-java/2022_1/coded.txt");
+        String s = deco.decodificar(decodificadas.get(0));
         System.out.println(s);
         Display d = new Display(800, 100);
         d.mostrar(s);
+
+    }
+
+    public Decodificador() {
 
     }
 
@@ -24,7 +29,7 @@ public class Decodificador {
         return dni;
     }
 
-    public static String decodificar(String codificada) {
+    public String decodificar(String codificada) {
 
         char[] chars = codificada.toCharArray();
 
@@ -36,7 +41,7 @@ public class Decodificador {
 
     }
 
-    public static List<String> leerArchivo(String ruta) {
+    public List<String> leerArchivo(String ruta) {
 
         List<String> lines = new ArrayList<>();
 
