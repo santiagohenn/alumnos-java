@@ -3,12 +3,11 @@ package Rp2;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import Rp2.Operaciones;
-import p2.Lector;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class OperacionesTest {
 
@@ -16,7 +15,7 @@ public class OperacionesTest {
 
     @Before
     public void instanciateOperations() {
-        op = new Rp2.Operaciones();
+        op = new Operaciones();
     }
 
     @Test
@@ -48,7 +47,7 @@ public class OperacionesTest {
 
         Map<String, String> mapa = new HashMap<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 4; i++) {
             mapa.put("key" + i, "dummyValue");
         }
 
@@ -129,27 +128,12 @@ public class OperacionesTest {
 
     @Test
     public void readerTest0() {
-        Assert.assertTrue(op.reader("input.txt"));
+        Assert.assertFalse(op.reader("bad_file.txt"));
     }
 
     @Test
     public void readerTest1() {
-        Assert.assertTrue(op.reader("bad_file.txt"));
-    }
-
-    @Test
-    public void hwTest0() {
-        File file = new File("hw.txt");
-        try {
-            boolean result = Files.deleteIfExists(file.toPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        op.writeDNI("hw.txt");
-        Lector lec = new Lector("hw.txt");
-        String hw = lec.leerLinea(0).replaceAll(" ","")
-                .toLowerCase(Locale.ROOT);
-        Assert.assertEquals("dni", hw);
+        Assert.assertTrue(op.reader("coded.txt"));
     }
 
 }

@@ -3,3 +3,5 @@ alumnos-java.iml
 target
 hw.txt
 *.txt
+.gitignore
+*.iml
