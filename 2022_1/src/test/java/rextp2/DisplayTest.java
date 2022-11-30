@@ -1,4 +1,4 @@
-package Rp2;
+package rextp2;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,7 +7,7 @@ public class DisplayTest {
 
     @Test
     public void DisplayTestGeneral0() {
-        Display display = new Display(202, 303);
+        rextp2.Display display = new rextp2.Display(202, 303);
         Assert.assertEquals(display.jf.getWidth(), 202);
         Assert.assertEquals(display.jf.getHeight(), 303);
     }
@@ -27,7 +27,7 @@ public class DisplayTest {
     @Test
     public void DisplayTest1() {
         Display display = new Display(200, 300);
-        display.mostrar("Vamos Argentina!");
+        display.mostrar("Hola Mundo!");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

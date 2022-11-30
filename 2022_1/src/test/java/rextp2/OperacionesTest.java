@@ -1,5 +1,7 @@
-package Rp2;
+package reg;
 
+import Rp2.Decodificador;
+import Rp2.Operaciones;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

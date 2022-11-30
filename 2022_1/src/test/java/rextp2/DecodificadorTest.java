@@ -1,4 +1,4 @@
-package Rp2;
+package rextp2;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -82,12 +82,34 @@ public class DecodificadorTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void code_file_test(){
+        Decodificador deco = new Decodificador();
+        List<String> lista = deco.leerArchivo("decoded.txt");
+        System.out.println("test: " + lista.size());
+        for (String coded : lista) {
+            System.out.println(decodificar_test(coded));
+        }
+
+    }
+
+    @Test
+    public void code_file_test2(){
+        Decodificador deco = new Decodificador();
+        List<String> lista = deco.leerArchivo("coded.txt");
+        System.out.println("test: " + lista.size());
+        for (String coded : lista) {
+            System.out.println(decodificar_test(coded));
+        }
+
+    }
+
     public String decodificar_test(String codificada) {
 
         char[] chars = codificada.toCharArray();
 
         for (int i = 0 ; i < chars.length ; i++) {
-            chars[i] = (char) (chars[i] - 2);
+            chars[i] = (char) (chars[i] - 5);
         }
 
         return new String(chars);

@@ -1,4 +1,4 @@
-package Rp2;
+package rextp2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,9 +14,9 @@ public class Decodificador {
 
         Decodificador deco = new Decodificador();
         List<String> decodificadas = deco.leerArchivo("C:/Projects/alumnos-java/2022_1/coded.txt");
-        String s = deco.decodificar(decodificadas.get(0));
+        String s = deco.decodificar(decodificadas.get(12));
         System.out.println(s);
-        Display d = new Display(800, 100);
+        Display d = new Display(800, 200);
         d.mostrar(s);
 
     }
@@ -34,7 +34,7 @@ public class Decodificador {
         char[] chars = codificada.toCharArray();
 
         for (int i = 0 ; i < chars.length ; i++) {
-            chars[i] = (char) (chars[i] - 2);
+            chars[i] = (char) (chars[i] - 5);
         }
 
         return new String(chars);

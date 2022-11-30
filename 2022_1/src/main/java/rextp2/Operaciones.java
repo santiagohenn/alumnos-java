@@ -1,4 +1,4 @@
-package Rp2;/*
+package reg;/*
  * Nombre y Apellido: Leandro Beltran
  * DNI: 39.595.480
  */
@@ -20,7 +20,7 @@ public class Operaciones {
         mapa.put("dummyKey", "dummyValue");
 
         if (mapa.size() >= 3){
-             mapa.clear();//Short.MAX_VALUE;
+             mapa.clear();
         }
          
     }
